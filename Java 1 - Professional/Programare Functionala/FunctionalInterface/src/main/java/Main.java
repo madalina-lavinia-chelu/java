@@ -37,7 +37,7 @@ public class Main {
             modify.andThen(null).accept(myList);
         }
         catch (Exception e){
-            System.out.println("Exception" + e);
+            System.out.println("Exception -> " + e);
         }
 
         BiConsumer<Integer, Integer> sumNumber = (x,y) -> System.out.println(x + y);
