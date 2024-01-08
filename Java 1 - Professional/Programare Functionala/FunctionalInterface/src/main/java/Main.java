@@ -43,7 +43,15 @@ public class Main {
         BiConsumer<Integer, Integer> sumNumber = (x,y) -> System.out.println(x + y);
         sumNumber.accept(1, 2);
 
+        Function<String, Integer > nrOfCharascters = String::length;
+        System.out.println(nrOfCharascters.apply("text for function"));
 
+        BiFunction<String, String, Integer> nrOfCharasctersBi = (e1,e2) -> e1.length() + e2.length();
+        System.out.println(nrOfCharasctersBi.apply("text1 for BiFunction","text1 for BiFunction"));
 
+        //Să se scrie o instanță de Function<String, Integer> care ia ca parametru un String ce reprezintă un număr și întoarce pătratul acestuia. De exemplu, inputul va fi "9", iar rezultatul va fi 81
+
+        Function<String, Integer > powerNumber = e ->  Integer.parseInt(e) * Integer.parseInt(e);
+        System.out.println(powerNumber.apply("9"));
     }
 }
