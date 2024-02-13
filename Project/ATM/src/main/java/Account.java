@@ -1,6 +1,17 @@
+import lombok.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@Builder
 public class Account {
-    public static void main(String[] args) {
-        System.out.println("holla");
-    }
+    private String name;
+    private String numberAccount;
+    private String pin;
+    private Float balance;
+
+
+
 
 }
