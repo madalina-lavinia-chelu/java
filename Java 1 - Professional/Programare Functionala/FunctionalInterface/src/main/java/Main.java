@@ -9,20 +9,10 @@ public class Main {
         logger.print("The first test");
          */
 
-        //Nu primește nici un parametru și are rolul de a genera o valoar
-        Supplier <Double> randomNumber = () -> Math.random() * 100;
-        System.out.println("Random number " + randomNumber.get());
+        extracted();
 
-        //Scopul acestuia este de a consuma inputul.
-        Consumer<String> display = System.out::println;
-        display.accept("Hello word!");
 
-        Consumer<List<Integer>> modify = list -> {
-            for (int i = 0; i < list.size(); i++)
-                list.set(i, 2 * list.get(i));
-        };
-        Consumer<List<Integer>> printList = list -> list
-                .forEach(System.out::println);
+        Consumer <List <Integer>> modify = getListConsumer();
 
         List <Integer> myList = new ArrayList<>();
         myList.add(2);
@@ -53,5 +43,25 @@ public class Main {
 
         Function<String, Integer > powerNumber = e ->  Integer.parseInt(e) * Integer.parseInt(e);
         System.out.println(powerNumber.apply("9"));
+    }
+
+    private static Consumer <List <Integer>> getListConsumer() {
+        //Scopul acestuia este de a consuma inputul.
+        Consumer<String> display = System.out::println;
+        display.accept("Hello word!");
+
+        Consumer<List<Integer>> modify = list -> {
+            for (int i = 0; i < list.size(); i++)
+                list.set(i, 2 * list.get(i));
+        };
+        Consumer<List<Integer>> printList = list -> list
+                .forEach(System.out::println);
+        return modify;
+    }
+
+    private static void extracted() {
+        //Nu primește nici un parametru și are rolul de a genera o valoar
+        Supplier <Double> randomNumber = () -> Math.random() * 100;
+        System.out.println("Random number " + randomNumber.get());
     }
 }
