@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @NoArgsConstructor
 public class Login {
 
-    private AtomicBoolean validare(HashMap <String, Account> dataBaseAccountsExtras, String name, String pin){
+    private AtomicBoolean validareV1(HashMap <String, Account> dataBaseAccountsExtras, String name, String pin){
 
         AtomicBoolean valid = new AtomicBoolean(false);
         dataBaseAccountsExtras.forEach((k,v) ->{
@@ -14,6 +14,11 @@ public class Login {
                 valid.set(true);
         });
         return valid;
+    }
+    private boolean validareV2(HashMap <String, Account> dataBaseAccountsExtras, String name, String pin){
+
+        return dataBaseAccountsExtras.values().stream()
+                .anyMatch(account -> account.getName().equals(name) && account.getPin().equals(pin));
     }
 
     public Account validareUser(HashMap<String, Account> dataBaseAccountsExtras){
@@ -27,7 +32,7 @@ public class Login {
             String userName = keypad.readString();
             String userPin = keypad.readString();
             String numberAccount = keypad.readString();
-            if(validare(dataBaseAccountsExtras, userName, userPin).get()) {
+            if(validareV1(dataBaseAccountsExtras, userName, userPin).get()) {
                 System.out.println("admis");
                 return dataBaseAccountsExtras.get(numberAccount);
             }
