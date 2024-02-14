@@ -6,13 +6,15 @@ public class Screen {
         System.out.println("**      Type 3 - Deposit          **");
         System.out.println("**      Type 4 - Exit             **");
         System.out.println("************************************");
+        System.out.println();
     }
-    public void ViewBalanceScreen(){
+    public static void ViewBalanceScreen(){
         System.out.println();
         System.out.println("************************************");
         System.out.println("            View Balance            ");
         System.out.println("My balance: ");
         System.out.println("************************************");
+        System.out.println();
 
     }
 }
